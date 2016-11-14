@@ -1,0 +1,34 @@
+---
+title: "Two Way Tables"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Two Way Tables}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+
+- Never uses retina figures
+- Has a smaller default figure size
+- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+
+```{r, echo=FALSE, message=FALSE}
+library(testlib)
+```
+
+```{r}
+k <- cross_table(as.factor(mtcars$cyl), as.factor(mtcars$gear))
+k
+```
+
+
+### Bar Plots
+
+```{r}
+k <- cross_table(as.factor(mtcars$cyl), as.factor(mtcars$gear))
+barplot(k)
+```
+
+

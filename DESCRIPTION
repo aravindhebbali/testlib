@@ -2,14 +2,15 @@ Package: testlib
 Type: Package
 Title: Cross tabulation of categorical variables
 Version: 0.1.0
-Authors@R: person("Aravind", "Hebbali", "hebbali.aravind@gmail.com", c("aut", "cre"))
+Authors@R: person("Aravind", "Hebbali", email = "hebbali.aravind@gmail.com", role = c("aut", "cre"))
 Description: A set of functions for creating and plotting cross tabulation
     of categorical variables. 
 Depends:
     R(>= 3.2.4)
 Imports:
     dplyr,
-    lazyeval
+    lazyeval,
+    readr
 Suggests:
     covr,
     testthat,
@@ -22,5 +23,9 @@ Encoding: UTF-8
 LazyData: true
 Collate:
     'cross-table.R'
+    'output.R'
+    'testlib.R'
+    'utils.R'
+    'data.R'
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1
