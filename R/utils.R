@@ -1,5 +1,5 @@
 formatter_freq <- function(x) {
-    if (missing(x))
+    if (missing(x)) 
         stop("argument x is missing.")
     x <- as.character(x)
     return(format(x, width = 13, justify = "centre"))
@@ -12,7 +12,7 @@ formatter <- function(x) {
 }
 
 percent <- function(x, y) {
-    out <- round((x / y) * 100, 2)
+    out <- round((x/y) * 100, 2)
     return(out)
 }
 
@@ -27,7 +27,7 @@ formatas <- function(x, round, width, justify = "centre") {
 }
 
 bin_size <- function(data, bins) {
-    return((max(data, na.rm = TRUE) - min(data, na.rm = TRUE)) / bins)
+    return((max(data, na.rm = TRUE) - min(data, na.rm = TRUE))/bins)
 }
 
 intervals <- function(data, bins, na.rm = TRUE) {
@@ -54,11 +54,11 @@ freq <- function(data, bins, inta) {
 }
 
 divide_by <- function(x) {
-    1 / x
+    1/x
 }
 
 standardize <- function(x, avg, stdev, p) {
-    result <- ((x - avg) / stdev) ^ p
+    result <- ((x - avg)/stdev)^p
     return(result)
 }
 
@@ -75,24 +75,24 @@ md_helper <- function(x, y) {
 }
 
 std_error <- function(x) {
-    result <- sd(x) / (length(x) ^ 0.5)
+    result <- sd(x)/(length(x)^0.5)
     return(result)
 }
 
 ss <- function(x) {
-    return(x ^ 2)
+    return(x^2)
 }
 
 uss <- function(x, y) {
-    return((x - y) ^ 2)
+    return((x - y)^2)
 }
 
 stat_uss <- function(x) {
-
-    if(!is.numeric(x)) {
-      stop('x must be numeric')
+    
+    if (!is.numeric(x)) {
+        stop("x must be numeric")
     }
-    result <- sum(x ^ 2)
+    result <- sum(x^2)
     return(result)
 }
 
@@ -184,7 +184,7 @@ row_pct <- function(mat, tot) {
     l <- length(tot)
     result <- c()
     for (i in seq_len(rows)) {
-        diva <- mat[i, ] / tot[i]
+        diva <- mat[i, ]/tot[i]
         result <- rbind(result, diva)
     }
     rownames(result) <- NULL
@@ -197,7 +197,7 @@ col_pct <- function(mat, tot) {
     l <- length(tot)
     result <- c()
     for (i in seq_len(cols)) {
-        diva <- mat[, i] / tot[i]
+        diva <- mat[, i]/tot[i]
         result <- cbind(result, diva)
     }
     colnames(result) <- NULL
@@ -225,33 +225,33 @@ fround <- function(x) {
 }
 
 pol_chi <- function(l1, l2, df, col) {
-
+    
     x <- c(l1, seq(l1, l2, 0.01), l2)
     y <- c(0, dchisq(seq(l1, l2, 0.01), df), 0)
     polygon(x, y, col = col)
-
+    
 }
 
 pol_f <- function(l1, l2, num_df, den_df, col) {
-
+    
     x <- c(l1, seq(l1, l2, 0.01), l2)
     y <- c(0, df(seq(l1, l2, 0.01), num_df, den_df), 0)
     polygon(x, y, col = col)
-
+    
 }
 
 
 pol_cord <- function(l1, l2, mean, sd, col) {
-
+    
     x <- c(l1, seq(l1, l2, 0.01), l2)
     y <- c(0, dnorm(seq(l1, l2, 0.01), mean, sd), 0)
     polygon(x, y, col = col)
-
+    
 }
 
 
 xax <- function(mean) {
-
+    
     xl <- mean - 3
     xu <- mean + 3
     x <- seq(xl, xu, 0.01)
@@ -260,245 +260,127 @@ xax <- function(mean) {
 
 
 seql <- function(mean, sd) {
-
+    
     lmin <- mean - 3 * sd
     lmax <- mean + 3 * sd
-    l    <- seq(lmin, lmax, sd)
+    l <- seq(lmin, lmax, sd)
     return(l)
-
+    
 }
 
 
 xmm <- function(mean, sd) {
     xmin <- mean - 4 * sd
     xmax <- mean + 4 * sd
-    out  <- c(xmin, xmax)
+    out <- c(xmin, xmax)
     return(out)
 }
 
 
 pol_t <- function(l1, l2, df, col) {
-
+    
     x <- c(l1, seq(l1, l2, 0.01), l2)
     y <- c(0, dt(seq(l1, l2, 0.01), df), 0)
     polygon(x, y, col = col)
-
+    
 }
 
 
-# # paired t test
-# extract <- function(x, y) {
-#   z <- x - y
-#   dat <- as.data.frame(cbind(x, y, z))
-#   return(dat)
-# }
+# # paired t test extract <- function(x, y) { z <- x - y dat <-
+# as.data.frame(cbind(x, y, z)) return(dat) }
 
-# samp_err <- function(sigma, n) {
-#   result <- sigma / (n ^ 0.5)
-#   return(result)
-# }
+# samp_err <- function(sigma, n) { result <- sigma / (n ^ 0.5) return(result) }
 
-# # case 2: sigma unknown
-# conf_int_t <- function(u, s, n, alpha = 0.05) {
-#   a <- alpha / 2
-#   df <- n - 1
-#   error <- round(qt(a, df), 3) * -1
-#   lower <- u - (error * samp_err(s, n))
-#   upper <- u + (error * samp_err(s, n))
-#   result <- c(lower, upper)
-#   return(result)
-# }
+# # case 2: sigma unknown conf_int_t <- function(u, s, n, alpha = 0.05) { a <-
+# alpha / 2 df <- n - 1 error <- round(qt(a, df), 3) * -1 lower <- u - (error *
+# samp_err(s, n)) upper <- u + (error * samp_err(s, n)) result <- c(lower,
+# upper) return(result) }
 
-# stat <- function(x) {
-#   n <- length(x)
-#   Mean <- mean(x)
-#   stdev <- sd(x)
-#   serror <- samp_err(stdev, n)
-#   out <- c(Mean, stdev, serror)
-#   # out <- list(mean = Mean, sd = stdev)
-#   return(out)
-# }
+# stat <- function(x) { n <- length(x) Mean <- mean(x) stdev <- sd(x) serror <-
+# samp_err(stdev, n) out <- c(Mean, stdev, serror) # out <- list(mean = Mean,
+# sd = stdev) return(out) }
 
-# cor_sig <- function(corr, n) {
-#   t <- corr / ((1 - (corr ^ 2)) / (n - 2)) ^ 0.5
-#   df <- n - 2
-#   sig <- (1 - pt(t, df)) * 2
-#   return(round(sig, 4))
-# }
+# cor_sig <- function(corr, n) { t <- corr / ((1 - (corr ^ 2)) / (n - 2)) ^ 0.5
+# df <- n - 2 sig <- (1 - pt(t, df)) * 2 return(round(sig, 4)) }
 
-# formatter_pair <- function(x, w) {
-#   x1 <- format(x, nsmall = 4)
-#   x2 <- as.character(x1)
-#   ret <- format(x2, width = w, justify = "centre")
-#   return(ret)
+# formatter_pair <- function(x, w) { x1 <- format(x, nsmall = 4) x2 <-
+# as.character(x1) ret <- format(x2, width = w, justify = 'centre') return(ret)
 # }
 
 
-# format_cor <- function(x) {
-#   x1 <- format(x, nsmall = 4)
-#   x2 <- as.character(x1)
-#   ret <- format(x2, width = 13, justify = "centre")
-#   return(ret)
-# }
+# format_cor <- function(x) { x1 <- format(x, nsmall = 4) x2 <-
+# as.character(x1) ret <- format(x2, width = 13, justify = 'centre')
+# return(ret) }
 
-# format_cil <- function(x, w) {
-#   x <- as.character(x)
-#   ret <- format(x, width = w, justify = "centre")
-#   return(ret)
-# }
+# format_cil <- function(x, w) { x <- as.character(x) ret <- format(x, width =
+# w, justify = 'centre') return(ret) }
 
-# format_ciu <- function(x, w) {
-#   x <- as.character(x)
-#   ret <- format(x, width = w, justify = "centre")
-#   return(ret)
-# }
+# format_ciu <- function(x, w) { x <- as.character(x) ret <- format(x, width =
+# w, justify = 'centre') return(ret) }
 
-# r <- function(x) {
-#   return(round(x, 4))
-# }
+# r <- function(x) { return(round(x, 4)) }
 
-# fs <- function() {
-#     x <- rep("  ")
-#     return(x)
-# }
+# fs <- function() { x <- rep(' ') return(x) }
 
-# fg <- function(x, w) {
-#     z <- as.character(x)
-#     y <- format(z, width = w, justify = 'centre')
-#     return(y)
-# }
+# fg <- function(x, w) { z <- as.character(x) y <- format(z, width = w, justify
+# = 'centre') return(y) }
 
-# # basic computations
-# anova_split <- function(data, x, y) {
-#     by_factor <- data %>%
-#         group_by_(y) %>%
-#         select_(x) %>%
-#         summarise_each(funs(length, mean, var, sd)) %>%
-#         as.data.frame()
-#     return(by_factor)
-# }
+# # basic computations anova_split <- function(data, x, y) { by_factor <- data
+# %>% group_by_(y) %>% select_(x) %>% summarise_each(funs(length, mean, var,
+# sd)) %>% as.data.frame() return(by_factor) }
 
-# overall_stats <- function(data, x) {
-#     by_stats <- data %>%
-#         select_(x) %>%
-#         summarise_each(funs(length, mean, sd)) %>%
-#         as.data.frame()
-#     return(by_stats)
-# }
+# overall_stats <- function(data, x) { by_stats <- data %>% select_(x) %>%
+# summarise_each(funs(length, mean, sd)) %>% as.data.frame() return(by_stats) }
 
-# anova_avg <- function(data, y) {
-#     avg <- data %>%
-#         select_(y) %>%
-#         summarise_each(funs(mean)) %>%
-#         as.data.frame()
-#     return(avg)
-# }
+# anova_avg <- function(data, y) { avg <- data %>% select_(y) %>%
+# summarise_each(funs(mean)) %>% as.data.frame() return(avg) }
 
-# conf_int_t <- function(u, s, n, alpha = 0.05) {
-#   a <- alpha / 2
-#   df <- n - 1
-#   error <- round(qt(a, df), 3) * -1
-#   lower <- u - (error * samp_err(s, n))
-#   upper <- u + (error * samp_err(s, n))
-#   result <- c(lower, upper)
-#   return(result)
-# }
+# conf_int_t <- function(u, s, n, alpha = 0.05) { a <- alpha / 2 df <- n - 1
+# error <- round(qt(a, df), 3) * -1 lower <- u - (error * samp_err(s, n)) upper
+# <- u + (error * samp_err(s, n)) result <- c(lower, upper) return(result) }
 
-# conf_int_p <- function(u, se, alpha = 0.05) {
-#   a <- alpha / 2
-#   error <- round(qnorm(a), 3) * -1
-#   lower <- u - (error * se)
-#   upper <- u + (error * se)
-#   result <- c(lower, upper)
-#   return(result)
-# }
+# conf_int_p <- function(u, se, alpha = 0.05) { a <- alpha / 2 error <-
+# round(qnorm(a), 3) * -1 lower <- u - (error * se) upper <- u + (error * se)
+# result <- c(lower, upper) return(result) }
 
-# std_err <- function(x) {
-#   se <- sd(x) / sqrt(length(x))
-#   return(round(se, 3))
-# }
+# std_err <- function(x) { se <- sd(x) / sqrt(length(x)) return(round(se, 3)) }
 
-# mean_t <- function(x) {
-#     return(round(mean(x), 3))
-# }
+# mean_t <- function(x) { return(round(mean(x), 3)) }
 
-# sd_t <- function(x) {
-#     s <- sd(x)
-#     return(round(s, 3))
-# }
+# sd_t <- function(x) { s <- sd(x) return(round(s, 3)) }
 
-# data_split <- function(data, x, y) {
-#   by_gender <- data %>%
-#     group_by_(x) %>%
-#     select_(y) %>%
-#     summarise_each(funs(length, mean_t, sd_t, std_err)) %>%
-#     as.data.frame()
-#   return(by_gender)
-# }
+# data_split <- function(data, x, y) { by_gender <- data %>% group_by_(x) %>%
+# select_(y) %>% summarise_each(funs(length, mean_t, sd_t, std_err)) %>%
+# as.data.frame() return(by_gender) }
 
-# da <- function(data, y) {
-#   dat <- data %>%
-#     select_(y) %>%
-#     summarise_each(funs(length, mean_t, sd_t, std_err)) %>%
-#     as.data.frame()
-#   return(dat)
-# }
+# da <- function(data, y) { dat <- data %>% select_(y) %>%
+# summarise_each(funs(length, mean_t, sd_t, std_err)) %>% as.data.frame()
+# return(dat) }
 
-# sd_diff <- function(n1, n2, s1, s2) {
-#   n1 <- n1 - 1
-#   n2 <- n2 - 1
-#   n <- (n1 + n2) - 2
-#   return(((n1 * s1 + n2 * s2) / n) ^ 0.5)
-# }
+# sd_diff <- function(n1, n2, s1, s2) { n1 <- n1 - 1 n2 <- n2 - 1 n <- (n1 +
+# n2) - 2 return(((n1 * s1 + n2 * s2) / n) ^ 0.5) }
 
-# se_diff <- function(n1, n2, s1, s2) {
-#     df <- n1 + n2 - 2
-#     n_1 <- n1 - 1
-#     n_2 <- n2 - 1
-#     v <- (n_1 * s1 + n_2 * s2) / df
-#     return(sqrt(v * (1 / n1 + 1 / n2)))
-# }
+# se_diff <- function(n1, n2, s1, s2) { df <- n1 + n2 - 2 n_1 <- n1 - 1 n_2 <-
+# n2 - 1 v <- (n_1 * s1 + n_2 * s2) / df return(sqrt(v * (1 / n1 + 1 / n2))) }
 
-# se_sw <- function(s1, s2, n1, n2) {
-#   return(((s1 / n1) + (s2 / n2)) ^ 0.5)
-# }
+# se_sw <- function(s1, s2, n1, n2) { return(((s1 / n1) + (s2 / n2)) ^ 0.5) }
 
 
-# df <- function(n1, n2, s1, s2) {
-#   sn1 <- s1 / n1
-#   sn2 <- s2 / n2
-#   m1 <- 1 / (n1 - 1)
-#   m2 <- 1 / (n2 - 1)
-#   num <- (sn1 + sn2) ^ 2
-#   den <- (m1 * (sn1 ^ 2)) + (m2 * (sn2 ^ 2))
-#   return(round(num / den))
-# }
+# df <- function(n1, n2, s1, s2) { sn1 <- s1 / n1 sn2 <- s2 / n2 m1 <- 1 / (n1
+# - 1) m2 <- 1 / (n2 - 1) num <- (sn1 + sn2) ^ 2 den <- (m1 * (sn1 ^ 2)) + (m2
+# * (sn2 ^ 2)) return(round(num / den)) }
 
 
-# conf_int_pooled <- function(mean_diff, se_diff, alpha = 0.05) {
-#   a <- alpha / 2
-#   t <- qt(0.025, 198)
-# }
+# conf_int_pooled <- function(mean_diff, se_diff, alpha = 0.05) { a <- alpha /
+# 2 t <- qt(0.025, 198) }
 
-# # format functions
-# fw <- function(x, w) {
-#     x <- as.character(x)
-#     z <- format(x, width = w, justify = 'centre')
-#     return(z)
-# }
+# # format functions fw <- function(x, w) { x <- as.character(x) z <- format(x,
+# width = w, justify = 'centre') return(z) }
 
-# fn <- function(x, w) {
-#     y <- as.character(x)
-#     z <- format(y, width = w, justify = 'centre')
-#     return(z)
-# }
+# fn <- function(x, w) { y <- as.character(x) z <- format(y, width = w, justify
+# = 'centre') return(z) }
 
 
-# formats_t <- function() {
-#     x <- '   '
-#     return(x)
-# }
+# formats_t <- function() { x <- ' ' return(x) }
 
-# lns <- function(w) {
-#     cat(rep('-', w), sep = "")
-# }
+# lns <- function(w) { cat(rep('-', w), sep = '') }
