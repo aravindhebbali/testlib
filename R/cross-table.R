@@ -81,22 +81,22 @@ cross_table.default <- function(var1, var2) {
 }
 
 #' @export
-print.cross_table <- function(data, ...) {
+print.cross_table <- function(x, ...) {
 
-    print_cross(data)
+    print_cross(x)
 
 }
 
 #' @export
-barplot.cross_table <- function(data, beside = FALSE, proportional = FALSE, ...) {
-    i_data <- data$twowaytable
+barplot.cross_table <- function(height, beside = FALSE, proportional = FALSE, ...) {
+    i_data <- height$twowaytable
     nb <- ncol(i_data)
     bdata <- i_data[, c(-1, -nb)]
-    ln <- length(data$variable_levels)
+    ln <- length(height$var2_levels)
     bardata <- matrix(as.numeric(bdata), ncol = ln)
     cols <- nrow(bardata)
-    barplot(bardata, col = rainbow(cols), beside = beside, main = paste(data$variable_names[1],
-        "by", data$variable_names[2]), xlab = data$variable_names[2], ylab = "Frequency",
+    barplot(bardata, col = rainbow(cols), beside = beside, main = paste(height$varnames[1],
+        "by", height$varnames[2]), xlab = height$varnames[2], ylab = height$varnames[1],
         legend.text = T)
 
     # proportional stacked bar plots
@@ -106,20 +106,20 @@ barplot.cross_table <- function(data, beside = FALSE, proportional = FALSE, ...)
         h <- rep(colbar, nh)
         hichka <- matrix(h, nrow = nh, byrow = T)
         propo_data <- round((bardata/hichka) * 100, 2)
-        barplot(propo_data, col = rainbow(cols), main = paste(data$variable_names[1],
-            "by", data$variable_names[2]), xlab = data$variable_names[2], ylab = "Frequency",
+        barplot(propo_data, col = rainbow(cols), main = paste(height$varnames[1],
+            "by", height$varnames[2]), xlab = height$varnames[2], ylab = height$varnames[1],
             legend.text = T)
     }
 }
 
 #' @export
-mosaicplot.cross_table <- function(data, ...) {
-    i_data <- data$twowaytable
+mosaicplot.cross_table <- function(x, ...) {
+    i_data <- x$twowaytable
     nb <- ncol(i_data)
     mdata <- i_data[, c(-1, -nb)]
-    ln <- length(data$variable_levels)
+    ln <- length(x$var2_levels)
     modata <- matrix(as.numeric(mdata), ncol = ln)
     cols <- nrow(modata)
-    mosaicplot(modata, col = rainbow(cols), xlab = data$variable_names[1], ylab = data$variable_names[2],
-        main = paste(data$variable_names[1], "by", data$variable_names[2]))
+    mosaicplot(modata, col = rainbow(cols), xlab = x$varnames[1], ylab = x$varnames[2],
+        main = paste(x$varnames[1], "by", x$varnames[2]))
 }
