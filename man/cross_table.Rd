@@ -2,9 +2,12 @@
 % Please edit documentation in R/cross-table.R
 \name{cross_table}
 \alias{cross_table}
+\alias{cross_table.default}
 \title{Two Way Tables}
 \usage{
 cross_table(var1, var2)
+
+\method{cross_table}{default}(var1, var2)
 }
 \arguments{
 \item{var1}{First categorical variable}
@@ -35,7 +38,7 @@ variables. The tables created can be visualized as barplots and mosaicplots.
 cross_table is a generic function
 }
 \examples{
-k <- cross_table(mtcars$cyl, mtcars$gear)
+k <- cross_table(mtcars$cyl, mtcars$am)
 
 # bar plots
 barplot(k)

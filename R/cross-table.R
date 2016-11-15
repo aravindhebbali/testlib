@@ -21,7 +21,7 @@
 #' \item{percent_column}{total of columns as a percentage}
 #'
 #' @examples
-#' k <- cross_table(mtcars$cyl, mtcars$gear)
+#' k <- cross_table(mtcars$cyl, mtcars$am)
 #'
 #' # bar plots
 #' barplot(k)
@@ -32,14 +32,11 @@
 #' mosaicplot(k)
 #' @export
 
-
 cross_table <- function(var1, var2) UseMethod("cross_table")
 
+#' @export
+#' @rdname cross_table
 cross_table.default <- function(var1, var2) {
-
-    if (!(is.factor(var1) & is.factor(var2))) {
-        stop("var1 and var2 must be objects of type factor")
-    }
 
     var_1 <- l(deparse(substitute(var1)))
     var_2 <- l(deparse(substitute(var2)))
@@ -83,15 +80,15 @@ cross_table.default <- function(var1, var2) {
     return(result)
 }
 
-
-print.cross_table <- function(data) {
+#' @export
+print.cross_table <- function(data, ...) {
 
     print_cross(data)
 
 }
 
-
-barplot.cross_table <- function(data, beside = FALSE, proportional = FALSE) {
+#' @export
+barplot.cross_table <- function(data, beside = FALSE, proportional = FALSE, ...) {
     i_data <- data$twowaytable
     nb <- ncol(i_data)
     bdata <- i_data[, c(-1, -nb)]
@@ -115,8 +112,8 @@ barplot.cross_table <- function(data, beside = FALSE, proportional = FALSE) {
     }
 }
 
-
-mosaicplot.cross_table <- function(data) {
+#' @export
+mosaicplot.cross_table <- function(data, ...) {
     i_data <- data$twowaytable
     nb <- ncol(i_data)
     mdata <- i_data[, c(-1, -nb)]

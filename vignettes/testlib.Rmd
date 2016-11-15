@@ -19,16 +19,9 @@ library(testlib)
 ```
 
 ```{r}
-k <- cross_table(as.factor(mtcars$cyl), as.factor(mtcars$gear))
+k <- cross_table(mtcars$cyl, mtcars$am)
 k
 ```
 
-
-### Bar Plots
-
-```{r}
-k <- cross_table(as.factor(mtcars$cyl), as.factor(mtcars$gear))
-barplot(k)
-```
 
 
