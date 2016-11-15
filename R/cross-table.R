@@ -87,6 +87,8 @@ print.cross_table <- function(x, ...) {
 
 }
 
+#' @importFrom graphics barplot
+#' @importFrom grDevices rainbow
 #' @export
 barplot.cross_table <- function(height, beside = FALSE, proportional = FALSE, ...) {
     i_data <- height$twowaytable
@@ -112,6 +114,8 @@ barplot.cross_table <- function(height, beside = FALSE, proportional = FALSE, ..
     }
 }
 
+#' @importFrom graphics mosaicplot
+#' @importFrom grDevices rainbow
 #' @export
 mosaicplot.cross_table <- function(x, ...) {
     i_data <- x$twowaytable

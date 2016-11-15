@@ -48,9 +48,4 @@ test_that('output from cross_table matches expected results', {
 
 })
 
-test_that('cross_table returns appropriate errors', {
 
-    expect_error(cross_table(hsb$read, hsb$write),
-                 'var1 and var2 must be objects of type factor')
-
-})
