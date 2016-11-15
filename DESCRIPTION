@@ -16,7 +16,7 @@ Suggests:
     testthat,
     knitr,
     rmarkdown
-License: MIT License
+License: MIT + file LICENSE
 URL: http://www.rsquaredacademy.com/
 BugReports: https://github.com/rsquaredacademy/testlib/issues
 Encoding: UTF-8
