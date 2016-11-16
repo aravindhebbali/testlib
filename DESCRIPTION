@@ -8,9 +8,6 @@ Description: A set of functions for creating and plotting cross tabulation
 Depends:
     R(>= 3.2.4)
 Imports:
-    dplyr,
-    lazyeval,
-    readr,
     graphics
 Suggests:
     covr,
