@@ -17,7 +17,29 @@ knitr::opts_chunk$set(echo = TRUE)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/testlib)](http://cran.r-project.org/package=testlib)
 [![Coverage Status](https://img.shields.io/codecov/c/github/rsquaredacademy/testlib/master.svg)](https://codecov.io/github/rsquaredacademy/testlib?branch=master)
 
+## Overview
 
-testlib is a demo R package created to explore the different aspects of R package development. Hadley Wickham's book [R Packages](http://r-pkgs.had.co.nz/) was used as a guide for developing this package. The package contains a function for creating two way tables of categorical data and visualizing such tables using bar and mosaic plots.
+testlib is a demo R package created to explore the different aspects of R package development. Hadley Wickham's book [R Packages](http://r-pkgs.had.co.nz/) was used as a guide for developing this package. The package contains a function for creating two way tables of categorical data and visualizing such tables using bar and mosaic plots. Learn more in `vignette("testlib")` or `?cross_table`.
 
-The learning outcomes from the package development exercise will be shared in the form of a e-book.
+
+## Installation
+
+testlib is not currently available from CRAN, but you can install the development version from github with:
+
+```{r eval=FALSE}
+# install.packages("devtools")
+devtools::install_github("rsquaredacademy/testlib")
+```
+
+
+## Usage
+
+The main function in the pacakge is `cross_table()` which creates two way tables of categorical data.
+
+```{r ctable}
+library(testlib)
+k <- testlib::cross_table(mtcars$cyl, mtcars$am)
+k
+```
+
+

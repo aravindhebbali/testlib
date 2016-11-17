@@ -3,9 +3,7 @@ rounda <- function(x) {
 }
 
 formatter <- function(x) {
-    x <- as.character(x)
-    ret <- format(x, width = 13, justify = "right")
-    return(ret)
+    format(as.character(x), width = 13, justify = "right")
 }
 
 row_pct <- function(mat, tot) {

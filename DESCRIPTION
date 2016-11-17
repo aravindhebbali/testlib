@@ -1,6 +1,6 @@
 Package: testlib
 Type: Package
-Title: Cross tabulation of categorical variables
+Title: Cross Tabulation of Categorical Variables
 Version: 0.1.0
 Authors@R: person("Aravind", "Hebbali", email = "hebbali.aravind@gmail.com", role = c("aut", "cre"))
 Description: A set of functions for creating and plotting cross tabulation
@@ -15,7 +15,7 @@ Suggests:
     knitr,
     rmarkdown
 License: MIT + file LICENSE
-URL: http://www.rsquaredacademy.com/
+URL: https://github.com/rsquaredacademy/testlib
 BugReports: https://github.com/rsquaredacademy/testlib/issues
 Encoding: UTF-8
 LazyData: true

@@ -24,9 +24,9 @@
 #' k <- cross_table(mtcars$cyl, mtcars$am)
 #'
 #' # bar plots
-#' barplot(k)
-#' barplot(k, beside = TRUE)
-#' barplot(k, proportional = TRUE)
+#' plot(k)
+#' plot(k, beside = TRUE)
+#' plot(k, proportional = TRUE)
 #'
 #' # mosaic plots
 #' mosaicplot(k)
@@ -90,16 +90,30 @@ print.cross_table <- function(x, ...) {
 #' @importFrom graphics barplot
 #' @importFrom grDevices rainbow
 #' @export
-barplot.cross_table <- function(height, beside = FALSE, proportional = FALSE, ...) {
-    i_data <- height$twowaytable
+#' @title Cross Table Bar Plot
+#' @description \code{barplot.cross_table} creates stacked and grouped bar plots
+#' for the two way tables created using \code{cross_table}
+#' @details Bar plot method added to cross_table
+#' @param height An object of class cross_table
+#' @param beside a logical value. If FALSE, the columns of height are portrayed
+#' as stacked bars, and if TRUE the columns are portrayed as juxtaposed bars.
+#' @param proportional a logical value. If TRUE, the height of the bars is
+#' proportional
+#'
+#' @examples
+#' k <- cross_table(mtcars$cyl, mtcars$am)
+#' plot(k)
+#' plot(k, beside = TRUE)
+#' plot(k, proportional = TRUE)
+#'
+plot.cross_table <- function(x, beside = FALSE, proportional = FALSE, ...) {
+    i_data <- x$twowaytable
     nb <- ncol(i_data)
     bdata <- i_data[, c(-1, -nb)]
-    ln <- length(height$var2_levels)
+    ln <- length(x$var2_levels)
     bardata <- matrix(as.numeric(bdata), ncol = ln)
     cols <- nrow(bardata)
-    barplot(bardata, col = rainbow(cols), beside = beside, main = paste(height$varnames[1],
-        "by", height$varnames[2]), xlab = height$varnames[2], ylab = height$varnames[1],
-        legend.text = T)
+
 
     # proportional stacked bar plots
     if (proportional == TRUE) {
@@ -108,15 +122,29 @@ barplot.cross_table <- function(height, beside = FALSE, proportional = FALSE, ..
         h <- rep(colbar, nh)
         hichka <- matrix(h, nrow = nh, byrow = T)
         propo_data <- round((bardata/hichka) * 100, 2)
-        barplot(propo_data, col = rainbow(cols), main = paste(height$varnames[1],
-            "by", height$varnames[2]), xlab = height$varnames[2], ylab = height$varnames[1],
+        barplot(propo_data, col = rainbow(cols), main = paste(x$varnames[1],
+            "by", x$varnames[2]), xlab = x$varnames[2], ylab = x$varnames[1],
             legend.text = T)
+    } else {
+        barplot(bardata, col = rainbow(cols), beside = beside,
+                main = paste(x$varnames[1], "by", x$varnames[2]),
+                xlab = x$varnames[2], ylab = x$varnames[1],
+                legend.text = T)
     }
 }
 
 #' @importFrom graphics mosaicplot
 #' @importFrom grDevices rainbow
 #' @export
+#' @title Mosaic Plot Cross Table
+#' @description \code{mosaicplot.cross_table} creates mosaic plot
+#' for the two way tables created using \code{cross_table}
+#' @details Mosaic plot method added to cross_table
+#' @param x An object of class cross_table
+#' @examples
+#' k <- cross_table(mtcars$cyl, mtcars$am)
+#' mosaicplot(k)
+#'
 mosaicplot.cross_table <- function(x, ...) {
     i_data <- x$twowaytable
     nb <- ncol(i_data)

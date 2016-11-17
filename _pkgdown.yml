@@ -1,0 +1,43 @@
+templates:
+  params:
+    bootswatch: cerulean
+
+home:
+  links:
+  - text: Learn more
+    href: http://www.rsquaredacademy.com
+
+
+reference:
+- title: Cross Table
+  desc: >
+    The `cross_table()` function is used to create two way tables of
+    categorical data. It displays frequency, percent, row percent
+    and column percent for each cell.
+  contents:
+  - cross_table
+  - cross_table.default
+
+- title: Bar Plot
+  desc: >
+    Any two way table created using the `cross_table()` function can
+    be visualized using the barplot method. The input for the barplot
+    function must be an object of class `cross_table`.
+  contents:
+  - plot.cross_table
+
+
+- title: Mosaic Plot
+  desc: >
+    Any two way table created using the `cross_table()` function can
+    be visualized using the mosaicplot method. The input for the
+    mosaicplot function must be an object of class `cross_table`.
+  contents:
+  - mosaicplot.cross_table
+
+- title: Data
+  desc: >
+    testlib comes with a built-in dataset `hsb` which is used to
+    illustrate the functions as well as for running tests.
+  contents:
+  - hsb
