@@ -8,20 +8,52 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+Two way tables are useful in exploring the relationship between categorical 
+variables. This vignette summarizes the following functions available in the `testlib` package to create and visualize two way tables:
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+
+- `cross_table`
+- `barplot.cross_table`
+- `mosaicplot.cross_table`
 
 ```{r, echo=FALSE, message=FALSE}
 library(testlib)
 ```
+
+Create a two way table by specifying the two categorical variables, the 
+relationship between which is being explored.
 
 ```{r}
 k <- cross_table(mtcars$cyl, mtcars$am)
 k
 ```
 
+Visualize the two way tables in the following plots:
 
+- Bar Plot
 
+```{r fig.width=5, fig.height=5,fig.align='center'}
+k <- cross_table(mtcars$cyl, mtcars$am)
+plot(k)
+```
+
+- Grouped Bar Plot
+
+```{r fig.width=5, fig.height=5,fig.align='center'}
+k <- cross_table(mtcars$cyl, mtcars$am)
+plot(k, beside = TRUE)
+```
+
+- Proportional Bar Plot
+
+```{r fig.width=5, fig.height=5,fig.align='center'}
+k <- cross_table(mtcars$cyl, mtcars$am)
+plot(k, beside = FALSE, proportional = TRUE)
+```
+
+- Mosaic Plot
+
+```{r fig.width=5, fig.height=5,fig.align='center'}
+k <- cross_table(mtcars$cyl, mtcars$am)
+mosaicplot(k)
+```

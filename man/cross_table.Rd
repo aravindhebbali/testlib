@@ -41,9 +41,9 @@ cross_table is a generic function
 k <- cross_table(mtcars$cyl, mtcars$am)
 
 # bar plots
-barplot(k)
-barplot(k, beside = TRUE)
-barplot(k, proportional = TRUE)
+plot(k)
+plot(k, beside = TRUE)
+plot(k, proportional = TRUE)
 
 # mosaic plots
 mosaicplot(k)
