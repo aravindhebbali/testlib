@@ -8,6 +8,8 @@
 }
 \arguments{
 \item{x}{An object of class cross_table}
+
+\item{...}{further arguments to be passed to or from methods.}
 }
 \description{
 \code{mosaicplot.cross_table} creates mosaic plot

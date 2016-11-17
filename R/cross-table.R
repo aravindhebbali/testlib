@@ -94,11 +94,12 @@ print.cross_table <- function(x, ...) {
 #' @description \code{barplot.cross_table} creates stacked and grouped bar plots
 #' for the two way tables created using \code{cross_table}
 #' @details Bar plot method added to cross_table
-#' @param height An object of class cross_table
+#' @param x An object of class cross_table
 #' @param beside a logical value. If FALSE, the columns of height are portrayed
 #' as stacked bars, and if TRUE the columns are portrayed as juxtaposed bars.
 #' @param proportional a logical value. If TRUE, the height of the bars is
 #' proportional
+#' @param ... further arguments to be passed to or from methods.
 #'
 #' @examples
 #' k <- cross_table(mtcars$cyl, mtcars$am)
@@ -141,6 +142,7 @@ plot.cross_table <- function(x, beside = FALSE, proportional = FALSE, ...) {
 #' for the two way tables created using \code{cross_table}
 #' @details Mosaic plot method added to cross_table
 #' @param x An object of class cross_table
+#' @param ... further arguments to be passed to or from methods.
 #' @examples
 #' k <- cross_table(mtcars$cyl, mtcars$am)
 #' mosaicplot(k)

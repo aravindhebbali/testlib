@@ -7,13 +7,15 @@
 \method{plot}{cross_table}(x, beside = FALSE, proportional = FALSE, ...)
 }
 \arguments{
+\item{x}{An object of class cross_table}
+
 \item{beside}{a logical value. If FALSE, the columns of height are portrayed
 as stacked bars, and if TRUE the columns are portrayed as juxtaposed bars.}
 
 \item{proportional}{a logical value. If TRUE, the height of the bars is
 proportional}
 
-\item{height}{An object of class cross_table}
+\item{...}{further arguments to be passed to or from methods.}
 }
 \description{
 \code{barplot.cross_table} creates stacked and grouped bar plots
