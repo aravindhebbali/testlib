@@ -65,7 +65,7 @@ cross_table.default <- function(var1, var2) {
     ccent <- apply(ccent, c(1, 2), rounda)
     x <- cbind(x, rowtotal)
     x <- cbind(unname(row_name), x)
-    if (is.factor(var1)) {
+    if (is.factor(var2)) {
         col_name <- levels(var2)
     } else {
         col_name <- unique(sort(var2))
@@ -118,6 +118,7 @@ plot.cross_table <- function(x, beside = FALSE, proportional = FALSE, ...) {
 
     # proportional stacked bar plots
     if (proportional == TRUE) {
+
         colbar <- colSums(bardata)
         nh <- nrow(bardata)
         h <- rep(colbar, nh)
@@ -126,12 +127,19 @@ plot.cross_table <- function(x, beside = FALSE, proportional = FALSE, ...) {
         barplot(propo_data, col = rainbow(cols), main = paste(x$varnames[1],
             "by", x$varnames[2]), xlab = x$varnames[2], ylab = x$varnames[1],
             legend.text = T)
+        result <- list(data = propo_data)
+
     } else {
+
         barplot(bardata, col = rainbow(cols), beside = beside,
                 main = paste(x$varnames[1], "by", x$varnames[2]),
                 xlab = x$varnames[2], ylab = x$varnames[1],
                 legend.text = T)
+        result <- list(data = bardata)
     }
+
+    class(result) <- "cross_table"
+    return(result)
 }
 
 #' @importFrom graphics mosaicplot
@@ -156,4 +164,7 @@ mosaicplot.cross_table <- function(x, ...) {
     cols <- nrow(modata)
     mosaicplot(modata, col = rainbow(cols), xlab = x$varnames[1], ylab = x$varnames[2],
         main = paste(x$varnames[1], "by", x$varnames[2]))
+    result <- list(data = modata)
+    class(result) <- "cross_table"
+    return(result)
 }
