@@ -2,7 +2,7 @@
 testlib
 =======
 
-[![Travis-CI Build Status](https://travis-ci.org/rsquaredacademy/testlib.svg?branch=master)](https://travis-ci.org/rsquaredacademy/testlib) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/rsquaredacademy/testlib?branch=master&svg=true)](https://ci.appveyor.com/project/rsquaredacademy/testlib) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/testlib)](http://cran.r-project.org/package=testlib) [![Coverage Status](https://img.shields.io/codecov/c/github/rsquaredacademy/testlib/master.svg)](https://codecov.io/github/rsquaredacademy/testlib?branch=master)
+[![Travis-CI Build Status](https://travis-ci.org/rsquaredacademy/testlib.svg?branch=master)](https://travis-ci.org/rsquaredacademy/testlib) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/rsquaredacademy/testlib?branch=master&svg=true)](https://ci.appveyor.com/project/rsquaredacademy/testlib) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/testlib)](http://cran.r-project.org/package=testlib) [![Coverage Status](https://img.shields.io/codecov/c/github/rsquaredacademy/testlib/master.svg)](https://codecov.io/github/rsquaredacademy/testlib?branch=master) [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/0.1.0/active.svg)](http://www.repostatus.org/#active) [![GitHub issues](https://img.shields.io/github/issues/rsquaredacademy/testlib.svg)](https://github.com/rsquaredacademy/testlib/issues) [![Twitter](https://img.shields.io/twitter/url/https/github.com/rsquaredacademy/testlib.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
 
 Overview
 --------
@@ -12,7 +12,9 @@ testlib is a demo R package created to explore the different aspects of R packag
 Installation
 ------------
 
-testlib is not currently available from CRAN, but you can install the development version from github with:
+testlib is not currently available from CRAN, but you can install the development version from github:
+
+[![GitHub version](https://badge.fury.io/gh/rsquaredacademy%2Ftestlib.svg)](https://badge.fury.io/gh/rsquaredacademy%2Ftestlib)
 
 ``` r
 # install.packages("devtools")
@@ -63,3 +65,8 @@ k
     ## | Column Total |           19 |           13 |           32 |
     ## |              |        0.594 |        0.406 |              |
     ## -------------------------------------------------------------
+
+License
+-------
+
+[![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/rsquaredacademy/testlib/blob/master/LICENSE)
